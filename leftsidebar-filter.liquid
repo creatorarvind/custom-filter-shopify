@@ -18,6 +18,7 @@
 <h4 class="filter__dash">{{ settings.filterName_one}}</h4>
 {% assign priceTagFilter = settings.pricefilter | split: ", " %}
 
+<!-- Price Tag Filter -->
 <ul>
 
 {% for tag in priceTagFilter %}
@@ -36,3 +37,28 @@
 
 {% endfor %}
 </ul>
+
+<!-- Size Tag Filter -->
+<ul>
+
+{% for tag in sizeTagFilter %}
+
+{% assign taghandle = tag | handle | downcase | append: '+' %}
+{% assign taghandle2 = tag | handle | downcase %}
+{% assign tag_url2 = tag_url | replace: taghandle, '' %}
+{% assign tag_url2 = tag_url2 | replace: taghandle2, '' %}
+
+<li class="sizeTagList" data-group="{{ tag | handle | downcase }}">
+<a class="taggroup" href="/collections/{% if collection.handle.size > 0 %}{{ collection.handle }}{% else %}all{% endif %}/{% unless current_tags contains tag %}{% unless tag_url == "" %}{{ tag_url }}+{% endunless %}{{ tag | handle | downcase }}{% else %}{{tag_url2}} {% endunless %}">
+<input type="checkbox" value="{{ tag | handle | downcase }}" {% if current_tags contains  tag %}checked="checked"{% endif %}>
+{{ tag }}
+</a>
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+</div>
+
