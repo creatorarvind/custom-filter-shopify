@@ -1,0 +1,53 @@
+
+
+{
+    "name": "Filter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Filter Name"
+      },
+      {
+        "type": "text",
+        "id": "filterName_one",
+        "label": "Filter First Type"
+      },
+      {
+        "type": "header",
+        "content": "Price"
+      },
+      {
+        "type": "text",
+        "id": "pricefilter",
+        "label": "Write Price Filter Text Here"
+      },
+      {
+        "type": "text",
+        "id": "filterName_two",
+        "label": "Filter Second Type"
+      },
+      {
+        "type": "header",
+        "content": "Color"
+      },
+      {
+        "type": "text",
+        "id": "colorfilter",
+        "label": "Write Color Filter Text Here"
+      },
+      {
+        "type": "text",
+        "id": "filterName_three",
+        "label": "Filter Third Type"
+      },
+      {
+        "type": "header",
+        "content": "Size"
+      },
+      {
+        "type": "text",
+        "id": "sizefilter",
+        "label": "Write Size Filter Text Here"
+      }
+    ]
+  },
