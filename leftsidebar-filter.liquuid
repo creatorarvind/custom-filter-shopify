@@ -1,1 +1,38 @@
+<!-- Custom Filter Sidebar With Checkbox -->
+<div class="filterClass">
+<div class="filterText">Filter Bar</div>
+<div class="filterby">
 
+{% assign tag_url = '' %}
+{% for current_tag in current_tags %}
+{% assign current_taghandle = current_tag | handle | downcase %}
+{% assign tag_url = tag_url | append: current_taghandle %}
+{% unless forloop.last ==  true %}
+{% assign tag_url = tag_url | append: "+" %}
+{% endunless %}    
+{% endfor %}
+
+<a href="/collections/all">
+<h4 class="allitem">All Products</h4>
+</a>
+<h4 class="filter__dash">{{ settings.filterName_one}}</h4>
+{% assign priceTagFilter = settings.pricefilter | split: ", " %}
+
+<ul>
+
+{% for tag in priceTagFilter %}
+
+{% assign taghandle = tag | handle | downcase | append: '+' %}
+{% assign taghandle2 = tag | handle | downcase %}
+{% assign tag_url2 = tag_url | replace: taghandle, '' %}
+{% assign tag_url2 = tag_url2 | replace: taghandle2, '' %}
+
+<li class="priceTagList" data-group="{{ tag | handle | downcase }}">
+<a class="taggroup" href="/collections/{% if collection.handle.size > 0 %}{{ collection.handle }}{% else %}all{% endif %}/{% unless current_tags contains tag %}{% unless tag_url == "" %}{{ tag_url }}+{% endunless %}{{ tag | handle | downcase }}{% else %}{{tag_url2}} {% endunless %}">
+<input type="checkbox" value="{{ tag | handle | downcase }}" {% if current_tags contains  tag %}checked="checked"{% endif %}>
+{{ tag }}
+</a>
+</li>
+
+{% endfor %}
+</ul>
